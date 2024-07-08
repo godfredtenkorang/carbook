@@ -1,9 +1,20 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Category, CarForRent, Contact, FeaturedCarForRent
+from .models import Category, CarForRent, Contact, FeaturedCarForRent, NeedADriver
 from django.contrib import messages
 
 
 def index(request):
+    user = request.user
+    if request.method == 'POST':
+        pick_up_location = request.POST['pick_up_location']
+        drop_off_location = request.POST['drop_off_location']
+        pick_up_date = request.POST['pick_up_date']
+        drop_off_date = request.POST['drop_off_date']
+        pick_up_time= request.POST['pick_up_time']
+        
+        drivers = NeedADriver(user=user, pick_up_location=pick_up_location, drop_off_location=drop_off_location, pick_up_date=pick_up_date, drop_off_date=drop_off_date, pick_up_time=pick_up_time)
+        drivers.save()
+        return redirect('index')
     vehicles = FeaturedCarForRent.objects.all()
     context = {
         'vehicles': vehicles

@@ -8,3 +8,4 @@ prepopulated_fields = {"slug": ("name",)}
 admin.site.register(CarForRent)
 admin.site.register(FeaturedCarForRent)
 admin.site.register(Contact)
+admin.site.register(NeedADriver)

@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 CAR_TRANSMISSION = (
     ("Automatic", "Automatic"),
@@ -87,3 +88,18 @@ class Contact(models.Model):
         
     def __str__(self):
         return self.fullname
+    
+class NeedADriver(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    pick_up_location = models.CharField(max_length=100)
+    drop_off_location = models.CharField(max_length=100)
+    pick_up_date = models.CharField(max_length=20, null=True, blank=True)
+    drop_off_date = models.CharField(max_length=20, null=True, blank=True)
+    pick_up_time = models.CharField(max_length=20, null=True)
+    
+    class Meta:
+        verbose_name_plural = 'Need a driver'
+        ordering = ['-pick_up_date']
+        
+    def __str__(self):
+        return self.user.username

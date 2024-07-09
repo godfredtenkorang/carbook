@@ -26,7 +26,7 @@
             <img class="profile-img"
                 src="{{ user.profile.image.url }}"
                 alt="">
-            <form class="form-signin" method="POST">
+            <form class="form-signin" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ u_form|crispy }}
                 {{ p_form|crispy }}

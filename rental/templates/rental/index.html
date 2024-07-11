@@ -130,7 +130,7 @@
                                 <h2 class="mb-0"><a href="#">{{ vehicle.name }}</a></h2>
                                 <div class="d-flex mb-3">
                                     <span class="cat">{{ vehicle.drive_type }}</span>
-                                    <p class="price ml-auto">${{ vehicle.accra_price }} <span>/Accra</span></p>
+                                    <p class="price ml-auto">{{ vehicle.accra_price }} <span>/Accra</span></p>
                                 </div>
                                 <p class="d-flex mb-0 d-block">
                                     {% if user.is_authenticated %}
@@ -140,7 +140,7 @@
                                     <a href="{% url 'my-login' %}" class="btn btn-primary py-2 mr-1">Login to Book
                                         now</a>
                                     {% endif %}
-                                    <a href="#" class="">${{ vehicle.outside_price }}/Outside</a>
+                                    <a href="#" class="btn btn-primary py-2 mr-1">{{ vehicle.outside_price }}/Outside</a>
                                 </p>
                             </div>
                         </div>

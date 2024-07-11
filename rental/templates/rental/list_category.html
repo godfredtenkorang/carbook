@@ -30,8 +30,8 @@
                     <div class="text">
                         <h2 class="mb-0"><a href="">{{ vehicle.name }}</a></h2>
                         <div class="d-flex mb-3">
-                            <span class="cat">With a Driver</span>
-                            <p class="price ml-auto">${{ vehicle.accra_price }} <span>/Accra</span></p>
+                            <span class="cat">{{ vehicle.drive_type }}</span>
+                            <p class="price ml-auto">{{ vehicle.accra_price }} <span>/Accra</span></p>
                         </div>
                         <p class="d-flex mb-0 d-block">
                             {% if user.is_authenticated %}
@@ -40,7 +40,7 @@
                             {% else %}
                             <a href="{% url 'my-login' %}" class="btn btn-primary py-2 mr-1">Login to Book now</a>
                             {% endif %}
-                                <a href="#" class="">${{vehicle.outside_price }}/Outside</a></a>
+                                <a href="#" class="">{{vehicle.outside_price }}/Outside</a></a>
                         </p>
                     </div>
                 </div>
